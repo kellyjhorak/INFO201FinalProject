@@ -9,11 +9,57 @@ date: "2023-12-01"
 ```{r}
 library(tidyverse)
 
-gdp <- read.csv("data/gdp.csv")
-global_education <- read.csv("data/global_education.csv")
+gdp <- read.csv("gdp.csv")
+global_education <- read.csv("global_education.csv")
 ```
 
 ## Merging Data
 ```{r}
 gdp_global_education <- left_join(gdp, global_education, by = c("Country.Territory" = "Countries.and.areas"))
 ```
+
+## Load Merged Data
+```{r}
+ls(gdp_global_education)
+```
+
+## Find the completion rate in males and females
+```{r}
+completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Male"))
+
+completionRate <- na.omit(completionRate)
+
+completionRate
+```
+
+
+## Find the youth 15-24 literacy rate in males and females 
+```{r}
+youthLiteracyRate <- subset(gdp_global_education, select =c("Country.Territory", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male"))
+
+youthLiteracyRate <- na.omit(completionRate)
+
+youthLiteracyRate
+```
+
+
+## Find gross primary enrollment in education 
+```{r}
+grossPrimaryEnrollment <- subset(gdp_global_education, select =c("Country.Territory", "Gross_Primary_Education_Enrollment"))
+
+grossPrimaryEnrollment <- na.omit(grossPrimaryEnrollment)
+
+grossPrimaryEnrollment
+```
+
+## Find unemployment rates
+```{r}
+unemploymentRates <- subset(gdp_global_education, select =c("Country.Territory", "Unemployment_Rate"))
+
+unemploymentRates <- na.omit(unemploymentRates)
+
+unemploymentRates
+```
+
+## find income classes. make incomce classes and sort each country into its own bin for gdp
+
