@@ -25,7 +25,7 @@ ls(gdp_global_education)
 
 ## Find the completion rate in males and females
 ```{r}
-completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Male"))
+completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female"))
 
 completionRate <- na.omit(completionRate)
 
@@ -61,5 +61,14 @@ unemploymentRates <- na.omit(unemploymentRates)
 unemploymentRates
 ```
 
-## find income classes. make incomce classes and sort each country into its own bin for gdp
+## COMPLETE MERGED DATASET WITH ALL VARIABLES WE NEED
+```{r}
+FINALgdp_global_education <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male", "Gross_Primary_Education_Enrollment", "Unemployment_Rate"  ))
+
+FINALgdp_global_education <- na.omit(FINALgdp_global_education)
+
+FINALgdp_global_education
+```
+
+## find income classes. make incomce classes and sort each country into its own bin for gdpp
 
