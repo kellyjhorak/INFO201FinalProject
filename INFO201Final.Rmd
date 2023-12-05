@@ -4,4 +4,21 @@ output: html_document
 date: "2023-12-01"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 # START OF INFO 201 PROJECT 
+## Downloading Data
+```{r}
+library(tidyverse)
+
+gdp <- read.csv("gdp.csv")
+global_education <- read.csv("global_education.csv")
+```
+
+## Merging Data
+```{r}
+gdp_global_education <- left_join(gdp, global_education, by = c("Country.Territory" = "Countries.and.areas"))
+
+```
