@@ -13,12 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 
-gdp <- read.csv("gdp.csv")
-global_education <- read.csv("global_education.csv")
+gdp <- read.csv("data/gdp.csv")
+global_education <- read.csv("data/global_education.csv")
 ```
 
 ## Merging Data
 ```{r}
 gdp_global_education <- left_join(gdp, global_education, by = c("Country.Territory" = "Countries.and.areas"))
-
 ```
