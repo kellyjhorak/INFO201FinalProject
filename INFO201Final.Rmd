@@ -28,8 +28,6 @@ ls(gdp_global_education)
 completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female"))
 
 completionRate <- na.omit(completionRate)
-
-completionRate
 ```
 
 
@@ -38,8 +36,6 @@ completionRate
 youthLiteracyRate <- subset(gdp_global_education, select =c("Country.Territory", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male"))
 
 youthLiteracyRate <- na.omit(completionRate)
-
-youthLiteracyRate
 ```
 
 
@@ -48,8 +44,6 @@ youthLiteracyRate
 grossPrimaryEnrollment <- subset(gdp_global_education, select =c("Country.Territory", "Gross_Primary_Education_Enrollment"))
 
 grossPrimaryEnrollment <- na.omit(grossPrimaryEnrollment)
-
-grossPrimaryEnrollment
 ```
 
 ## Find unemployment rates
@@ -57,18 +51,61 @@ grossPrimaryEnrollment
 unemploymentRates <- subset(gdp_global_education, select =c("Country.Territory", "Unemployment_Rate"))
 
 unemploymentRates <- na.omit(unemploymentRates)
-
-unemploymentRates
 ```
 
-## COMPLETE MERGED DATASET WITH ALL VARIABLES WE NEED
+## MERGED DATASET WITH ALL VARIABLES WE NEED
 ```{r}
-FINALgdp_global_education <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male", "Gross_Primary_Education_Enrollment", "Unemployment_Rate"  ))
+FINALgdp_global_education <- subset(gdp_global_education, select =c("Country.Territory", "IMF", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male", "Gross_Primary_Education_Enrollment", "Unemployment_Rate"  ))
 
+## gets rid of na values
 FINALgdp_global_education <- na.omit(FINALgdp_global_education)
 
-FINALgdp_global_education
+## gets rid of all 0 values in gdp (IMF)
+FINALgdp_global_education <- FINALgdp_global_education[FINALgdp_global_education$IMF != 0, ]
 ```
 
-## find income classes. make incomce classes and sort each country into its own bin for gdpp
+##changing IMF to be numerical, not character
+### IMF = GDP per capita estimated by the International Monetary Fund
+```{r}
+FINALgdp_global_education$IMF <- as.numeric(FINALgdp_global_education$IMF)
 
+min_value <- min(FINALgdp_global_education$IMF)
+max_value <- max(FINALgdp_global_education$IMF)
+
+print(paste("Minimum value:", min_value))
+print(paste("Maximum value:", max_value))
+```
+
+## Adding a categorical variable to the dataset: make different income classes, and sort each country into its own bin.
+
+```{r}
+FINALgdp_global_education <- mutate(FINALgdp_global_education,
+                       Rank_of_GDP_per_Capita = case_when(
+                           IMF >= 0 & IMF <= 2500 ~ "Very Low",
+                           IMF >= 2501 & IMF <= 10000 ~ "Low",
+                           IMF >= 10001 & IMF <= 25000 ~ "Mid",
+                           IMF >= 25001 & IMF <= 50000 ~ "High",
+                           IMF >= 50001 ~ "Very High",
+                           TRUE ~ NA_character_  # Catch-all for other cases
+                       ))
+```
+
+## Adding a numerical variable: This calculates an education index by taking the average of completion rates for both male and female, the average of literacy rates for both genders, and adds the gross primary education enrollment. Finally, it normalizes the index between 0 and 1 to make it more interpretable and comparable across different scales.
+
+```{r}
+# Assuming your dataset is named 'education_data'
+FINALgdp_global_education$Education_Index <- (
+    (FINALgdp_global_education$Completion_Rate_Primary_Male + FINALgdp_global_education$Completion_Rate_Primary_Female) / 2 +
+    (FINALgdp_global_education$Youth_15_24_Literacy_Rate_Female + FINALgdp_global_education$Youth_15_24_Literacy_Rate_Male) / 2 +
+    FINALgdp_global_education$Gross_Primary_Education_Enrollment
+) / 3
+
+# Normalize the index between 0 and 1
+FINALgdp_global_education$Education_Index <- (FINALgdp_global_education$Education_Index - min(FINALgdp_global_education$Education_Index)) /
+                                  (max(FINALgdp_global_education$Education_Index) - min(FINALgdp_global_education$Education_Index))
+```
+
+### FINAL DATASET
+```{r}
+FINALgdp_global_education
+```
