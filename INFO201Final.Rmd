@@ -119,6 +119,56 @@ FINALgdp_global_education
 ## EDIT LATER Make scatterplot of education index in correlation to GDP (gdp on x axis up to 130k, education index on y axis 0-1)
 
 
-## plot each gdp bin with its corresponding completion rate for primaryrate(female) 
+## plot each gdp bin with its corresponding completion rate for primaryrate(female)
+```{r}
+# Load necessary libraries
+# Load necessary libraries
+library(ggplot2)
+
+# Assuming FINALgdp_global_education is your dataset
+# Replace 'Completion_Rate_Primary_Female' and 'Rank_of_GDP_per_Capita' with your actual column names
+
+# Create a boxplot
+ggplot(FINALgdp_global_education, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Female)) +
+  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7) +
+  labs(title = "Completion Rate for Primary Education (Female) vs. GDP per Capita Rank",
+       x = "Rank of GDP per Capita",
+       y = "Completion Rate for Primary Education (Female)") +
+  theme_minimal() +
+  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP"))
+
+```
+
 
 ## plot each gdp bin with its corresponding completion rate for primaryrate(male) 
+```{r}
+# Load necessary libraries
+library(ggplot2)
+
+# Assuming FINALgdp_global_education is your dataset
+# Replace 'Completion_Rate_Primary_Male' and 'Rank_of_GDP_per_Capita' with your actual column names
+
+# Create a boxplot for Completion_Rate_Primary_Male
+ggplot(FINALgdp_global_education, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Male)) +
+  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7) +
+  labs(title = "Completion Rate for Primary Education (Male) vs. GDP per Capita Rank",
+       x = "Rank of GDP per Capita",
+       y = "Completion Rate for Primary Education (Male)") +
+  theme_minimal() +
+  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP"))
+```
+
+## plot GDP and Unemployment rate 
+```{r}
+# Assuming FINALgdp_global_education is your dataset
+# Replace 'IMF' and 'Unemployment_Rate' with your actual column names
+
+# Create a bar plot for Unemployment_Rate vs. IMF
+ggplot(FINALgdp_global_education, aes(x = IMF, y = Unemployment_Rate)) +
+  geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) +
+  labs(title = "Unemployment Rate vs. IMF",
+       x = "IMF",
+       y = "Unemployment Rate") +
+  theme_minimal()
+
+```
