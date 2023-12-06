@@ -81,13 +81,19 @@ print(paste("Maximum value:", max_value))
 ```{r}
 FINALgdp_global_education <- mutate(FINALgdp_global_education,
                        Rank_of_GDP_per_Capita = case_when(
-                           IMF >= 0 & IMF <= 2500 ~ "Very Low",
-                           IMF >= 2501 & IMF <= 10000 ~ "Low",
-                           IMF >= 10001 & IMF <= 25000 ~ "Mid",
-                           IMF >= 25001 & IMF <= 50000 ~ "High",
-                           IMF >= 50001 ~ "Very High",
+                           IMF >= 0 & IMF <= 1000 ~ "Very Low",
+                           IMF >= 1000 & IMF <= 5000 ~ "Low",
+                           IMF >= 5001 & IMF <= 25000 ~ "Mid",
+                           IMF >= 25001 ~ "High",
                            TRUE ~ NA_character_  # Catch-all for other cases
                        ))
+
+rank_counts <- FINALgdp_global_education %>%
+  count(Rank_of_GDP_per_Capita)
+
+# Display the counts
+print(rank_counts)
+
 ```
 
 ## Adding a numerical variable: This calculates an education index by taking the average of completion rates for both male and female, the average of literacy rates for both genders, and adds the gross primary education enrollment. Finally, it normalizes the index between 0 and 1 to make it more interpretable and comparable across different scales.
@@ -109,3 +115,10 @@ FINALgdp_global_education$Education_Index <- (FINALgdp_global_education$Educatio
 ```{r}
 FINALgdp_global_education
 ```
+
+## EDIT LATER Make scatterplot of education index in correlation to GDP (gdp on x axis up to 130k, education index on y axis 0-1)
+
+
+## plot each gdp bin with its corresponding completion rate for primaryrate(female) 
+
+## plot each gdp bin with its corresponding completion rate for primaryrate(male) 
