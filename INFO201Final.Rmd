@@ -111,7 +111,7 @@ filtered_data <- FINALgdp_global_education %>%
   filter(Completion_Rate_Primary_Female != 0)
 
 # Create a boxplot with adjustments using the filtered data
-ggplot(filtered_data, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Female)) +
+ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Female)) +
   geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
   labs(title = "Completion Rate for Primary Education (Female) vs. GDP per Capita Rank",
        x = "Rank of GDP per Capita",
@@ -131,7 +131,7 @@ filtered_data <- FINALgdp_global_education %>%
   filter(Completion_Rate_Primary_Male != 0)
 
 # Create a boxplot with adjustments using the filtered data
-ggplot(filtered_data, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Male)) +
+ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Male)) +
   geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
   labs(title = "Completion Rate for Primary Education (Male) vs. GDP per Capita Rank",
        x = "Rank of GDP per Capita",
@@ -211,4 +211,22 @@ ggplot(filtered_data, aes(x = IMF, y = Education_Gap)) +
   geom_point() + 
   labs(x = "IMF", y = "Education Gap") +
   ggtitle("Scatterplot of IMF vs. Education Gap (Filtered)")
+```
+```{r}
+summary_table <- FINALgdp_global_education %>%
+  group_by(Rank_of_GDP_per_Capita) %>%
+  summarise(
+    Median_IMF = median(IMF, na.rm = TRUE),
+    Median_Completion_Rate_Primary_Female = median(Completion_Rate_Primary_Female, na.rm = TRUE),
+    Median_Completion_Rate_Primary_Male = median(Completion_Rate_Primary_Male, na.rm = TRUE),
+    Median_Unemployment_Rate = median(Unemployment_Rate, na.rm = TRUE),
+    Median_OOSR_Primary_Age_Male = median(OOSR_Primary_Age_Male, na.rm = TRUE),
+    Median_OOSR_Primary_Age_Female = median(OOSR_Primary_Age_Female, na.rm = TRUE),
+    Median_Education_Gap = median(Education_Gap, na.rm = TRUE)
+  )
+
+# Label NA row as "Insufficient Data"
+summary_table$Rank_of_GDP_per_Capita[is.na(summary_table$Rank_of_GDP_per_Capita)] <- "Insufficient Data"
+
+summary_table
 ```
