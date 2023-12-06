@@ -226,7 +226,7 @@ summary_table <- FINALgdp_global_education %>%
   )
 
 # Label NA row as "Insufficient Data"
-summary_table$Rank_of_GDP_per_Capita[is.na(summary_table$Rank_of_GDP_per_Capita)] <- "Insufficient Data"
+summary_table$Rank_of_GDP_per_Capita[is.na(summary_table$Rank_of_GDP_per_Capita)] <- "NA: Insufficient Data"
 
 summary_table
 ```
