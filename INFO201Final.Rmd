@@ -169,13 +169,25 @@ ggplot(filtered_data, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primar
 # Assuming FINALgdp_global_education is your dataset
 # Replace 'IMF' and 'Unemployment_Rate' with your actual column names
 
-# Create a bar plot for Unemployment_Rate vs. IMF
-ggplot(FINALgdp_global_education, aes(x = IMF, y = Unemployment_Rate)) +
+# Create a bar plot for Unemployment_Rate vs. IMF starting x-axis at 500
+library(dplyr)
+
+# Assuming FINALgdp_global_education is your dataset
+# Replace 'IMF' and 'Unemployment_Rate' with your actual column names
+
+# Filter out rows where IMF or Unemployment_Rate is 0
+filtered_data <- FINALgdp_global_education %>%
+  filter(IMF != 0 & Unemployment_Rate != 0)
+
+# Create a bar plot for Unemployment_Rate vs. IMF with non-zero values
+ggplot(filtered_data, aes(x = IMF, y = Unemployment_Rate)) +
   geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) +
   labs(title = "Unemployment Rate vs. IMF",
        x = "IMF",
        y = "Unemployment Rate") +
-  theme_minimal()
+  theme_minimal() +
+  xlim(5000, max(filtered_data$IMF))  # Setting x-axis limits from 500 to maximum IMF value in filtered data
+
 
 ```
 
