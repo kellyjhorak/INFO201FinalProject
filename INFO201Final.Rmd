@@ -25,7 +25,7 @@ ls(gdp_global_education)
 
 ## Find the completion rate in males and females
 ```{r}
-completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female"))
+completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "OOSR_Primary_Age_Male","OOSR_Primary_Age_Female"))
 
 completionRate <- na.omit(completionRate)
 ```
@@ -55,7 +55,7 @@ unemploymentRates <- na.omit(unemploymentRates)
 
 ## MERGED DATASET WITH ALL VARIABLES WE NEED
 ```{r}
-FINALgdp_global_education <- subset(gdp_global_education, select =c("Country.Territory", "IMF", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male", "Gross_Primary_Education_Enrollment", "Unemployment_Rate"  ))
+FINALgdp_global_education <- subset(gdp_global_education, select =c("Country.Territory", "IMF", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female", "Youth_15_24_Literacy_Rate_Female", "Youth_15_24_Literacy_Rate_Male", "Gross_Primary_Education_Enrollment", "Unemployment_Rate", "OOSR_Primary_Age_Male", "OOSR_Primary_Age_Female"  ))
 
 ## gets rid of na values
 FINALgdp_global_education <- na.omit(FINALgdp_global_education)
@@ -81,10 +81,9 @@ print(paste("Maximum value:", max_value))
 ```{r}
 FINALgdp_global_education <- mutate(FINALgdp_global_education,
                        Rank_of_GDP_per_Capita = case_when(
-                           IMF >= 0 & IMF <= 1000 ~ "Very Low",
-                           IMF >= 1000 & IMF <= 5000 ~ "Low",
-                           IMF >= 5001 & IMF <= 25000 ~ "Mid",
-                           IMF >= 25001 ~ "High",
+                           IMF >= 0 & IMF <= 1000 ~ "Low",
+                           IMF >= 1000 & IMF <= 5000 ~ "Mid",
+                           IMF >= 5001 & IMF <= 25000 ~ "High",
                            TRUE ~ NA_character_  # Catch-all for other cases
                        ))
 
@@ -128,34 +127,41 @@ library(ggplot2)
 # Assuming FINALgdp_global_education is your dataset
 # Replace 'Completion_Rate_Primary_Female' and 'Rank_of_GDP_per_Capita' with your actual column names
 
-# Create a boxplot
-ggplot(FINALgdp_global_education, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Female)) +
-  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7) +
+# Filter out rows where Completion_Rate_Primary_Female is not equal to 0
+filtered_data <- FINALgdp_global_education %>%
+  filter(Completion_Rate_Primary_Female != 0)
+
+# Create a boxplot with adjustments using the filtered data
+ggplot(filtered_data, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Female)) +
+  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
   labs(title = "Completion Rate for Primary Education (Female) vs. GDP per Capita Rank",
        x = "Rank of GDP per Capita",
        y = "Completion Rate for Primary Education (Female)") +
   theme_minimal() +
-  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP"))
-
+  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP")) +
+  coord_cartesian(ylim = c(min(filtered_data$Completion_Rate_Primary_Female), max(filtered_data$Completion_Rate_Primary_Female)))
 ```
 
 
 ## plot each gdp bin with its corresponding completion rate for primaryrate(male) 
 ```{r}
 # Load necessary libraries
+# Load necessary libraries
 library(ggplot2)
 
-# Assuming FINALgdp_global_education is your dataset
-# Replace 'Completion_Rate_Primary_Male' and 'Rank_of_GDP_per_Capita' with your actual column names
+# Filter out rows where Completion_Rate_Primary_Female is not equal to 0
+filtered_data <- FINALgdp_global_education %>%
+  filter(Completion_Rate_Primary_Male != 0)
 
-# Create a boxplot for Completion_Rate_Primary_Male
-ggplot(FINALgdp_global_education, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Male)) +
-  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7) +
+# Create a boxplot with adjustments using the filtered data
+ggplot(filtered_data, aes(x = Rank_of_GDP_per_Capita, y = Completion_Rate_Primary_Male)) +
+  geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
   labs(title = "Completion Rate for Primary Education (Male) vs. GDP per Capita Rank",
        x = "Rank of GDP per Capita",
        y = "Completion Rate for Primary Education (Male)") +
   theme_minimal() +
-  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP"))
+  scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP")) +
+  coord_cartesian(ylim = c(min(filtered_data$Completion_Rate_Primary_Male), max(filtered_data$Completion_Rate_Primary_Male)))
 ```
 
 ## plot GDP and Unemployment rate 
@@ -170,5 +176,42 @@ ggplot(FINALgdp_global_education, aes(x = IMF, y = Unemployment_Rate)) +
        x = "IMF",
        y = "Unemployment Rate") +
   theme_minimal()
+
+```
+
+## GDP vs OOSR_Primary_Age_Male
+```{r}
+library(ggplot2)
+library(dplyr)
+    
+# Assuming FINALgdp_global_education is your dataset
+# Use your actual dataframe name if it's different
+
+filtered_data <- FINALgdp_global_education %>%
+  filter(OOSR_Primary_Age_Male != 0)
+
+ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Male)) +
+  geom_point() +
+  labs(x = "IMF", y = "OOSR Primary Age Female",
+       title = "IMF vs OOSR Primary Age Female Scatter Plot")
+
+```
+
+
+## GDP vs OOSR_Primary_Age_Female
+```{r}
+library(ggplot2)
+library(dplyr)
+    
+# Assuming FINALgdp_global_education is your dataset
+# Use your actual dataframe name if it's different
+
+filtered_data <- FINALgdp_global_education %>%
+  filter(OOSR_Primary_Age_Female != 0)
+
+ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Female)) +
+  geom_point() +
+  labs(x = "IMF", y = "OOSR Primary Age Female",
+       title = "IMF vs OOSR Primary Age Female Scatter Plot")
 
 ```
