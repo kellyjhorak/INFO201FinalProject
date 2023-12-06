@@ -212,6 +212,8 @@ ggplot(filtered_data, aes(x = IMF, y = Education_Gap)) +
   labs(x = "IMF", y = "Education Gap") +
   ggtitle("Scatterplot of IMF vs. Education Gap (Filtered)")
 ```
+
+## summary table
 ```{r}
 summary_table <- FINALgdp_global_education %>%
   group_by(Rank_of_GDP_per_Capita) %>%
