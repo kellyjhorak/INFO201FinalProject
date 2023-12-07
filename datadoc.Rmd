@@ -1,0 +1,56 @@
+---
+title: "datadoc"
+output: html_document
+date: "2023-12-07"
+---
+
+# Data Documentation
+
+## 1.) What are the original data sources (including web links or other pointers to the original material)
+
+#### In our project, we merged data from two different datasets, from two different source to create our final dataset. Both with a usability score of 10.00, the clear variables and concise information made these datasets the best choices for us to use.
+
+#### The first dataset is titled as, “World Educational Data”. We found this dataset on Kaggle, as our TA informed us that this was a reliable source to pull data from. This dataset was just updated a month ago by the creator, Nidula Elgiriyewithana. In this original dataset, there are 31 columns and 202 rows. 
+
+#### The second dataset we used is titled as, “GDP (in USD) Per Capita Income by Country”. We also found this dataset on Kaggle. This dataset was just updated 7 months ago by the creator, Raj Kumar Pandey. In this original dataset, there are 8 columns and 223 rows.
+
+ <br/>
+
+#### Web links: 
+#### *World Educational Data*: 
+#### https://www.kaggle.com/datasets/nelgiriyewithana/world-educational-data
+
+#### *GDP (in USD) Per Capita Income by Country*:
+#### https://www.kaggle.com/datasets/rajkumarpandey02/gdp-in-usd-per-capita-income-by-country
+
+ <br/>
+
+## 2.) Explanation of all variables you include here.
+#### **Completion_Rate_Primary_Female**: Completion rate for primary education among females.
+#### **Completion_Rate_Primary_Male**: Completion rate for primary education among males.
+#### **Country.Territory**: Name of the country
+#### **Education_Gap**: the absolute value of the difference between the completion rate of males and females
+#### **IMF**: GDP per capita estimated by the International Monetary Fund
+#### **OOSR_Primary_Age_Female**: Out-of-school rate for primary age females.
+#### **OOSR_Primary_Age_Male**: Out-of-school rate for primary age males.
+#### **Rank_of_GDP_per_Capita**: categorical classification derived from the GDP per capita values of countries. It assigns countries into different groups based on their GDP per capita ranges, creating a simplified ranking system. "Low" signifies countries with a relatively lower GDP per capita, falling within the range of 0 to 1000. "Mid" represents countries with a moderate GDP per capita, within the range of 1000 to 5000. "High" denotes countries with a higher GDP per capita, lying between 5001 and 25000.
+#### **Unemployment_Rate**: Unemployment rate in the respective county
+
+ <br/>
+ 
+## 3.) Basic summary statistics: number of rows, column, and number of missing/otherwise invalid values by each column. 
+#### Number of rows in our final dataset: 179
+#### Number of columns in our final dataset: 9
+
+ <br/>
+ 
+## Number of Missing (na and values of 0) in each variable 
+#### Country.Territory: 0
+#### IMF: 0
+#### Completion_Rate_Primary_Male: 81
+#### Completion_Rate_Primary_Female: 81
+#### Unemployment_Rate: 14
+#### OOSR_Primary_Age_Male: 69
+#### OOSR_Primary_Age_Female: 74
+#### Rank_of_GDP_per_Capita: 39
+#### Education_Gap: 96
