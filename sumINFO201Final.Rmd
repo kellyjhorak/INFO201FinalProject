@@ -256,3 +256,21 @@ ggplot() +
        fill = "GDP per Capita Rank")
 ```
 
+## counts
+```{r}
+nrow(FINALgdp_global_education)
+ncol(FINALgdp_global_education)
+
+# Counting NAs
+na_count <- sapply(FINALgdp_global_education, function(x) sum(is.na(x)))
+
+# Counting zeros
+zero_count <- sapply(FINALgdp_global_education, function(x) sum(x == 0))
+
+# Combine counts into a data frame
+counts_df <- data.frame(NA_Count = na_count, Zero_Count = zero_count)
+
+counts_df
+
+```
+
