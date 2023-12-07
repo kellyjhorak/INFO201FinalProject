@@ -1,0 +1,180 @@
+"Country.Territory","IMF","Completion_Rate_Primary_Male","Completion_Rate_Primary_Female","Unemployment_Rate","OOSR_Primary_Age_Male","OOSR_Primary_Age_Female","Rank_of_GDP_per_Capita","Education_Gap"
+"Luxembourg",132372,0,0,5.36,1,1,NA,0
+"Norway",101103,0,0,3.35,0,0,NA,0
+"Switzerland",98767,0,0,4.58,0,0,NA,0
+"Singapore",91100,0,0,4.11,0,0,NA,0
+"Qatar",83891,0,0,0.09,3,0,NA,0
+"United States",80034,0,0,14.7,1,1,NA,0
+"Iceland",75180,0,0,2.84,0,1,NA,0
+"Denmark",68827,0,0,4.91,1,0,NA,0
+"Australia",64964,0,0,5.27,0,0,NA,0
+"Netherlands",61098,0,0,3.2,1,1,NA,0
+"Austria",56802,0,0,4.67,0,0,NA,0
+"Israel",55535,0,0,3.86,0,0,NA,0
+"Sweden",55395,0,0,6.48,0,0,NA,0
+"Finland",54351,0,0,6.59,1,1,NA,0
+"Belgium",53377,0,0,5.59,1,0,NA,0
+"San Marino",52949,0,0,0,0,0,NA,0
+"Canada",52722,0,0,5.56,0,0,NA,0
+"Germany",51383,0,0,3.04,1,0,NA,0
+"United Arab Emirates",49451,0,0,2.35,8,5,NA,0
+"New Zealand",48826,0,0,4.07,1,1,NA,0
+"United Kingdom",46371,0,0,3.85,1,1,NA,0
+"France",44408,0,0,8.43,0,0,NA,0
+"Andorra",44387,0,0,0,0,0,NA,0
+"Malta",36989,0,0,3.47,0,0,NA,0
+"Italy",36812,0,0,9.89,3,3,NA,0
+"Japan",35385,0,0,2.29,0,0,NA,0
+"Brunei",35103,0,0,9.12,0,0,NA,0
+"Cyprus",33807,0,0,7.27,0,1,NA,0
+"Kuwait",33646,0,0,2.18,4,1,NA,0
+"South Korea",33393,0,0,4.15,1,1,NA,0
+"Slovenia",32214,0,0,4.2,1,0,NA,0
+"Czech Republic",31368,0,0,1.93,1,0,NA,0
+"Spain",31223,0,0,13.96,3,3,NA,0
+"Estonia",31209,0,0,5.11,2,2,NA,0
+"Saudi Arabia",29922,0,0,5.93,1,3,NA,0
+"Bahrain",28385,0,0,0.71,2,3,NA,0
+"Lithuania",28094,0,0,6.35,0,0,NA,0
+"Portugal",26012,0,0,6.33,0,1,NA,0
+"Latvia",25136,0,0,6.52,2,1,NA,0
+"Slovakia",23457,0,0,5.56,5,4,"High",0
+"Greece",22595,0,0,17.24,2,1,"High",0
+"Oman",21960,0,0,2.67,0,0,"High",0
+"Uruguay",21677,96,98,8.73,3,3,"High",2
+"Barbados",21085,99,99,10.33,1,2,"High",0
+"Guyana",20539,96,99,11.85,0,0,"High",3
+"Croatia",20537,0,0,6.93,0,0,"High",0
+"Poland",19912,0,0,3.47,2,2,"High",0
+"Trinidad and Tobago",19858,0,0,2.69,0,0,"High",0
+"Seychelles",19536,0,0,0,0,0,"High",0
+"Hungary",19385,0,0,3.4,4,5,"High",0
+"Romania",18530,0,0,3.98,12,13,"High",0
+"Antigua and Barbuda",18244,0,0,0,4,1,"High",0
+"Saint Kitts and Nevis",17856,0,0,0,0,0,"High",0
+"Chile",17827,96,97,7.09,1,2,"High",1
+"Maldives",17626,0,0,6.14,3,1,"High",0
+"Panama",17350,95,96,3.9,13,14,"High",1
+"Bulgaria",14893,0,0,4.34,13,13,"High",0
+"Palau",14804,0,0,0,0,0,"High",0
+"Costa Rica",14733,98,99,11.85,3,3,"High",1
+"Russia",14403,0,0,4.59,1,0,"High",0
+"China",13721,97,97,4.32,0,0,"High",0
+"Argentina",13709,91,94,9.79,0,0,"High",3
+"Malaysia",13382,0,0,3.32,0,0,"High",0
+"Turkmenistan",13065,100,100,3.91,0,0,"High",0
+"Mexico",12673,98,98,3.42,0,0,"High",0
+"Kazakhstan",12306,100,100,4.59,10,9,"High",0
+"Saint Lucia",12264,99,99,20.71,3,0,"High",0
+"Turkey",11931,99,98,13.49,5,5,"High",1
+"Nauru",11825,0,0,0,0,0,"High",0
+"Mauritius",11548,0,0,6.67,3,1,"High",0
+"Dominican Republic",11308,88,94,5.84,4,4,"High",6
+"Montenegro",11289,95,98,14.88,3,3,"High",3
+"Grenada",11137,0,0,0,0,0,"High",0
+"Serbia",10849,99,100,12.69,2,2,"High",1
+"Equatorial Guinea",9777,0,0,6.43,56,55,"High",0
+"Brazil",9673,95,97,12.08,1,1,"High",2
+"Saint Vincent and the Grenadines",9359,0,0,18.88,0,0,"High",0
+"Gabon",9294,66,75,20,0,0,"High",9
+"Dominica",9144,0,0,0,4,3,"High",0
+"Bosnia and Herzegovina",8223,99,100,18.42,0,0,"High",1
+"Thailand",8181,98,99,0.75,0,0,"High",1
+"Armenia",8007,99,99,16.99,9,9,"High",0
+"Belarus",7944,100,100,4.59,1,2,"High",0
+"Peru",7772,95,95,3.31,0,0,"High",0
+"Georgia",7600,100,100,14.4,2,2,"High",0
+"North Macedonia",7384,97,100,0,1,1,"High",3
+"Botswana",7270,95,98,18.19,12,10,"High",3
+"Albania",7058,94,96,12.33,6,3,"High",2
+"Belize",7017,95,96,6.41,1,1,"High",1
+"Libya",6763,0,0,18.56,0,0,"High",0
+"Azerbaijan",6757,0,0,5.51,10,7,"High",0
+"Ecuador",6642,98,98,3.97,0,0,"High",0
+"South Africa",6485,95,98,28.18,12,10,"High",3
+"Colombia",6417,91,95,9.71,3,2,"High",4
+"Moldova",6342,99,99,5.47,9,11,"High",0
+"Jamaica",6282,99,100,8,0,0,"High",1
+"Iraq",6180,78,73,12.82,0,0,"High",5
+"Tuvalu",6007,0,0,0,13,17,"High",0
+"Fiji",5887,0,0,4.1,1,1,"High",0
+"Paraguay",5667,93,96,4.81,0,0,"High",3
+"Suriname",5556,80,90,7.33,14,11,"High",10
+"Tonga",5421,98,99,1.12,0,0,"High",1
+"Guatemala",5358,80,76,2.46,11,10,"High",4
+"El Salvador",5308,84,89,4.11,14,13,"High",5
+"Marshall Islands",5164,0,0,0,25,27,"High",0
+"Namibia",5100,75,86,20.27,0,0,"High",11
+"Jordan",5048,96,97,14.72,18,19,"High",1
+"Indonesia",5016,91,92,4.69,3,8,"High",1
+"Mongolia",4814,96,98,6.01,2,3,"Mid",2
+"Ukraine",4654,100,99,8.88,9,7,"Mid",1
+"Algeria",4481,93,93,11.7,0,0,"Mid",0
+"Vietnam",4475,96,97,2.01,0,0,"Mid",1
+"Samoa",4436,0,0,8.36,0,0,"Mid",0
+"Cape Verde",4278,0,0,12.25,6,7,"Mid",0
+"Iran",4251,0,0,11.38,0,0,"Mid",0
+"Eswatini",4146,64,77,0,15,17,"Mid",13
+"Lebanon",3589,0,0,6.23,0,0,"Mid",0
+"Tunisia",4071,94,97,16.02,0,0,"Mid",3
+"Philippines",3905,89,95,2.15,3,3,"Mid",6
+"Djibouti",3802,0,0,10.3,32,35,"Mid",0
+"Bolivia",3800,0,0,3.5,5,5,"Mid",0
+"Morocco",3748,0,0,9.02,2,3,"Mid",0
+"Egypt",3644,91,92,10.76,0,0,"Mid",1
+"Venezuela",3640,0,0,8.8,10,10,"Mid",0
+"Papua New Guinea",3517,0,0,2.46,4,10,"Mid",0
+"Bhutan",3497,67,71,2.34,5,2,"Mid",4
+"Sri Lanka",3362,99,99,4.2,2,3,"Mid",0
+"Honduras",3278,81,87,5.39,11,14,"Mid",6
+"Angola",3204,63,57,6.89,0,0,"Mid",6
+"Vanuatu",3188,0,0,4.39,8,7,"Mid",0
+"Ivory Coast",2646,60,53,3.32,2,8,"Mid",7
+"India",2601,92,91,5.36,3,1,"Mid",1
+"Nicaragua",2589,0,0,6.84,0,0,"Mid",0
+"Uzbekistan",2563,0,0,5.92,0,2,"Mid",0
+"Mauritania",2475,68,58,9.55,25,21,"Mid",10
+"Bangladesh",2469,76,89,4.19,0,0,"Mid",13
+"Solomon Islands",2299,0,0,0.58,9,4,"Mid",0
+"Nigeria",2280,71,71,8.1,0,0,"Mid",0
+"Kenya",2269,77,82,2.64,0,0,"Mid",5
+"Haiti",2173,49,58,13.78,0,0,"Mid",9
+"Ghana",2024,69,73,4.33,1,0,"Mid",4
+"Kiribati",1989,92,96,0,0,0,"Mid",4
+"Cambodia",1896,68,79,0.68,9,9,"Mid",11
+"Laos",1858,84,83,0.63,8,9,"Mid",1
+"Zimbabwe",1851,86,92,4.95,0,0,"Mid",6
+"Kyrgyzstan",1736,99,100,6.33,0,0,"Mid",1
+"Senegal",1719,44,50,6.6,30,21,"Mid",6
+"Cameroon",1699,75,74,3.38,4,13,"Mid",1
+"Pakistan",1658,64,55,4.45,0,0,"Mid",9
+"Guinea",1549,52,39,4.3,15,29,"Mid",13
+"Ethiopia",1475,47,48,2.08,11,18,"Mid",1
+"Zambia",1423,71,73,11.43,17,13,"Mid",2
+"Benin",1390,51,44,2.23,3,10,"Mid",7
+"Nepal",1377,81,83,1.41,0,0,"Mid",2
+"Comoros",1360,75,77,4.34,18,18,"Mid",2
+"Tanzania",1348,75,84,1.98,15,12,"Mid",9
+"Tajikistan",1277,99,98,11.02,1,2,"Mid",1
+"Lesotho",1208,69,92,23.41,3,2,"Mid",23
+"Myanmar",1180,82,84,1.58,0,0,"Mid",2
+"Uganda",1105,39,43,1.84,6,3,"Mid",4
+"Togo",990,83,76,2.04,2,4,"Low",7
+"Sudan",975,66,64,16.53,31,35,"Low",2
+"Rwanda",970,48,61,1.03,6,6,"Low",13
+"Burkina Faso",900,32,29,6.26,21,22,"Low",3
+"Mali",889,50,41,7.22,38,44,"Low",9
+"Liberia",805,36,33,2.81,22,21,"Low",3
+"Eritrea",715,0,0,5.14,45,50,"Low",0
+"Chad",667,31,24,1.89,17,35,"Low",7
+"Niger",613,35,24,0.47,37,45,"Low",11
+"Mozambique",587,44,39,3.24,1,4,"Low",5
+"Yemen",573,70,55,12.91,10,21,"Low",15
+"Somalia",544,0,0,11.35,0,0,"Low",0
+"Madagascar",536,52,60,1.76,0,0,"Low",8
+"Central African Republic",534,54,33,3.68,0,0,"Low",21
+"Malawi",496,43,52,5.65,0,0,"Low",9
+"South Sudan",467,31,18,12.24,58,67,"Low",13
+"Sierra Leone",415,63,65,4.43,2,2,"Low",2
+"Afghanistan",611,67,40,11.12,0,0,"Low",27
+"Burundi",249,46,54,1.43,9,6,"Low",8
