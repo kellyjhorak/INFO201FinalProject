@@ -127,7 +127,7 @@ date: "2023-12-07"
 ![](graphs/gdp_comp_rate_female.png)   
    
 ![](graphs/gdp_comp_rate_male.png) 
-
+   
 <br>
 
 ***  
@@ -143,14 +143,14 @@ date: "2023-12-07"
 ![](graphs/gdp_oosr_female.png)  
    
 ![](graphs/gdp_oosr_male.png)  
-
+   
 <br>
 
 ***
 #### The scatterplot visualizing the relationship between GDP per capita and education gap (our added numerical varible) showed that in countries with lower GDPs, they tend to have a larger education gap. 
 
 ![](graphs/gdp_education_gap.png)  
-
+   
 <br>
 
 ***
