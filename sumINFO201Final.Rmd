@@ -5,7 +5,7 @@ date: "2023-12-01"
 ---
 
 # START OF INFO 201 PROJECT 
-## Downloading Data
+# Downloading Data
 ```{r}
 library(tidyverse)
 
@@ -13,16 +13,13 @@ gdp <- read.csv("gdp.csv")
 global_education <- read.csv("global_education.csv")
 ```
 
-## Merging Data
+# Data Joining
 ```{r}
 gdp_global_education <- left_join(gdp, global_education, by = c("Country.Territory" = "Countries.and.areas"))
-```
-
-## Load Merged Data
-```{r}
 ls(gdp_global_education)
 ```
 
+# Data Cleaning and Pre-processing
 ## If we need it: Find the completion rate in males and females
 ```{r}
 completionRate <- subset(gdp_global_education, select =c("Country.Territory", "Completion_Rate_Primary_Male", "Completion_Rate_Primary_Female"))
@@ -64,7 +61,6 @@ FINALgdp_global_education <- na.omit(FINALgdp_global_education)
 FINALgdp_global_education <- FINALgdp_global_education[FINALgdp_global_education$IMF != 0, ]
 ```
 
-
 ### IMF = GDP per capita estimated by the International Monetary Fund
 ```{r}
 FINALgdp_global_education$IMF <- as.numeric(FINALgdp_global_education$IMF)
@@ -76,7 +72,6 @@ max_value <- max(FINALgdp_global_education$IMF)
 print(paste("Minimum value:", min_value))
 print(paste("Maximum value:", max_value))
 ```
-
 
 ## Adding a categorical variable to the dataset: make different income classes, and sort each country into its own bin.
 ```{r}
@@ -101,8 +96,7 @@ print(rank_counts)
 ls(FINALgdp_global_education)
 ```
 
-
-## plot each gdp bin with its corresponding completion rate for primaryrate(female)
+## Plot each GDP bin with its corresponding completion rate for primaryrate(female)
 ```{r}
 library(ggplot2)
 
@@ -111,18 +105,20 @@ filtered_data <- FINALgdp_global_education %>%
   filter(Completion_Rate_Primary_Female != 0)
 
 # Create a boxplot with adjustments using the filtered data
-ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Female)) +
+gdp_comp_rate_female <- ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Female)) +
   geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
-  labs(title = "Completion Rate for Primary Education (Female) vs. GDP per Capita Rank",
+  labs(title = "GDP per Capita Rank vs. Completion Rate for Primary Education (Female)",
        x = "Rank of GDP per Capita",
        y = "Completion Rate for Primary Education (Female)") +
   theme_minimal() +
   scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP")) +
   coord_cartesian(ylim = c(min(filtered_data$Completion_Rate_Primary_Female), max(filtered_data$Completion_Rate_Primary_Female)))
+
+gdp_comp_rate_female
+ggsave("gdp_comp_rate_female.png", gdp_comp_rate_female)
 ```
 
-
-## plot each gdp bin with its corresponding completion rate for primaryrate(male)
+## Plot each GDP bin with its corresponding completion rate for primaryrate(male)
 ```{r}
 library(ggplot2)
 
@@ -131,17 +127,20 @@ filtered_data <- FINALgdp_global_education %>%
   filter(Completion_Rate_Primary_Male != 0)
 
 # Create a boxplot with adjustments using the filtered data
-ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Male)) +
+gdp_comp_rate_male <- ggplot(filtered_data, aes(x = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High")), y = Completion_Rate_Primary_Male)) +
   geom_boxplot(fill = "skyblue", color = "blue", alpha = 0.7, width = 0.5) +
-  labs(title = "Completion Rate for Primary Education (Male) vs. GDP per Capita Rank",
+  labs(title = "GDP per Capita Rank vs. Completion Rate for Primary Education (Male)",
        x = "Rank of GDP per Capita",
        y = "Completion Rate for Primary Education (Male)") +
   theme_minimal() +
   scale_x_discrete(labels = c("Low" = "Low GDP", "Mid" = "Mid GDP", "High" = "High GDP")) +
   coord_cartesian(ylim = c(min(filtered_data$Completion_Rate_Primary_Male), max(filtered_data$Completion_Rate_Primary_Male)))
+
+gdp_comp_rate_male
+ggsave("gdp_comp_rate_male.png", gdp_comp_rate_male)
 ```
 
-## plot GDP and Unemployment rate 
+## Plot GDP and Unemployment rate 
 ```{r}
 library(dplyr)
 
@@ -150,15 +149,17 @@ filtered_data <- FINALgdp_global_education %>%
   filter(IMF != 0 & Unemployment_Rate != 0)
 
 # Create a bar plot for Unemployment_Rate vs. IMF with non-zero values
-ggplot(filtered_data, aes(x = IMF, y = Unemployment_Rate)) +
+gdp_unemployment <- ggplot(filtered_data, aes(x = IMF, y = Unemployment_Rate)) +
   geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) +
-  labs(title = "Unemployment Rate vs. GDP Per Capita",
+  labs(title = "GDP Per Capita vs. Unemployment Rate",
        x = "GDP Per Capita",
        y = "Unemployment Rate") +
   theme_minimal() +
   xlim(5000, max(filtered_data$IMF))  # Setting x-axis limits from 500 to maximum IMF value in filtered data
-```
 
+gdp_unemployment
+ggsave("gdp_unemployment.png", gdp_unemployment)
+```
 
 ## GDP vs OOSR_Primary_Age_Male
 ```{r}
@@ -168,13 +169,15 @@ library(dplyr)
 filtered_data <- FINALgdp_global_education %>%
   filter(OOSR_Primary_Age_Male != 0)
 
-ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Male)) +
-  geom_point() +
+gdp_oosr_male <- ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Male)) +
+  geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) +
   labs(x = "GDP Per Capita", y = "Out-of-school Rate for Primary Age Males",
-       title = "GDP Per Capita vs Out-of-school Rate for Primary Age Males")
+       title = "GDP Per Capita vs Out-of-school Rate for Primary Age Males") +
+  theme_minimal()
 
+gdp_oosr_male
+ggsave("gdp_oosr_male.png", gdp_oosr_male)
 ```
-
 
 ## GDP vs OOSR_Primary_Age_Female
 ```{r}
@@ -184,15 +187,17 @@ library(dplyr)
 filtered_data <- FINALgdp_global_education %>%
   filter(OOSR_Primary_Age_Female != 0)
 
-ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Female)) +
-  geom_point() +
+gdp_oosr_female <- ggplot(filtered_data, aes(x = IMF, y = OOSR_Primary_Age_Female)) +
+  geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) +
   labs(x = "GDP Per Capita", y = "Out-of-school Rate for Primary Age Females",
-       title = "GDP Per Capita vs Out-of-school Rate for Primary Age Females")
+       title = "GDP Per Capita vs Out-of-school Rate for Primary Age Females") +
+  theme_minimal()
 
+gdp_oosr_female
+ggsave("gdp_oosr_female.png", gdp_oosr_female)
 ```
 
-## new numerical variable: the absolute value of the completion rate of males vs females, so it just shows the difference of males that complete school vs feamles. It shows that in countries w lower GDPs, women have a bigger education gap than men.
-
+## New numerical variable: the absolute value of the completion rate of males vs females, so it just shows the difference of males that complete school vs feamles. It shows that in countries w lower GDPs, women have a bigger education gap than men.
 ```{r}
 library(dplyr)
 
@@ -207,16 +212,20 @@ filtered_data <- FINALgdp_global_education %>%
   filter(!is.na(IMF) & IMF != 0 & !is.na(Education_Gap) & Education_Gap != 0)
 
 # Plotting the scatterplot with filtered data
-ggplot(filtered_data, aes(x = IMF, y = Education_Gap)) +
-  geom_point() + 
+gdp_education_gap <- ggplot(filtered_data, aes(x = IMF, y = Education_Gap)) +
+  geom_point(stat = "identity", fill = "skyblue", color = "blue", alpha = 0.7) + 
   labs(x = "GDP Per Capita", y = "Education Gap") +
-  ggtitle("Scatterplot of GDP Per Capita vs. Education Gap")
+  ggtitle("GDP Per Capita vs. Education Gap") +
+  theme_minimal()
+
+gdp_education_gap
+ggsave("gdp_education_gap.png", gdp_education_gap)
 ```
 
-## summary table
+## Summary Table
 ```{r}
 summary_table <- FINALgdp_global_education %>%
-  group_by(Rank_of_GDP_per_Capita) %>%
+  group_by(Rank_of_GDP_per_Capita = factor(Rank_of_GDP_per_Capita, levels = c("Low", "Mid", "High", "NA: Insufficient Data"))) %>%
   summarise(
     Median_IMF = median(IMF, na.rm = TRUE),
     Median_Completion_Rate_Primary_Female = median(Completion_Rate_Primary_Female, na.rm = TRUE),
@@ -231,6 +240,7 @@ summary_table <- FINALgdp_global_education %>%
 summary_table$Rank_of_GDP_per_Capita[is.na(summary_table$Rank_of_GDP_per_Capita)] <- "NA: Insufficient Data"
 
 summary_table
+write.csv(summary_table, "summary_table.csv", row.names = FALSE)
 ```
 
 ## Map Plot 
@@ -244,7 +254,7 @@ names(FINALgdp_global_education)[names(FINALgdp_global_education) == "region"] <
 
 merged_data <- merge(world_map, FINALgdp_global_education, by.x = "region", by.y = "Country.Territory")
 
-ggplot() +
+gdp_map <- ggplot() +
   geom_map(data = merged_data,
            map = world_map,
            aes(x = long, y = lat, map_id = region, fill = Rank_of_GDP_per_Capita),
@@ -253,10 +263,14 @@ ggplot() +
   theme_minimal() +
   labs(title = "World GDP per Capita Rank",
        subtitle = "Geographical Representation of GDP Per Capita ",
-       fill = "GDP per Capita Rank")
+       fill = "GDP per Capita Rank Map") +
+  theme_minimal()
+
+gdp_map
+ggsave("gdp_map.png", gdp_map, width = 10, height = 5, units = "in")
 ```
 
-## counts
+## Counts
 ```{r}
 nrow(FINALgdp_global_education)
 ncol(FINALgdp_global_education)
@@ -271,6 +285,4 @@ zero_count <- sapply(FINALgdp_global_education, function(x) sum(x == 0))
 counts_df <- data.frame(NA_Count = na_count, Zero_Count = zero_count)
 
 counts_df
-
 ```
-

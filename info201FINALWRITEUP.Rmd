@@ -104,7 +104,7 @@ date: "2023-12-07"
 
 <br>
 
-#### We created box plots to investigate the relationship between primary completion rates (by gender) across GDP per capita ranks. These plots offer insights to spread, medians, and outliers within each rank category. We created scatter plots to examine GDP per capita and education gap, along with GDP per capita and the OOSR (by gender), as all are continuous variables. For these graphs, we filtered out the zero values to prevent distortion in the visualizations.
+#### We created box plots to investigate the relationship between primary completion rates (by gender) across GDP per capita ranks. These plots offer insights to spread, medians, and outliers within each rank category. We created scatter plots to examine GDP per capita and education gap, GDP per capita and the OOSR (by gender), and GDP per capita and unemployment rate, as all are continuous variables. For these graphs, we filtered out the zero values to prevent distortion in the visualizations.
 
 <br>
 
@@ -120,35 +120,60 @@ date: "2023-12-07"
 
 <br>
 
+## Results
+
 #### The boxplots depicting male and female completion rates across the different GDP per capita ranks (low, mid, high) revealed similar patterns. For both, countries with lower GDP per capita tend to have a broader distribution in completion rates, indicating higher variability. The median completion rate was lower for countries with lower GDP per capita. Additionally, there was a presence of more outliers in high GDP countries, exhibited in both the female and male graphs.
 
-# *add in box plots*
+```{r, echo=FALSE}
+knitr::include_graphics("gdp_comp_rate_female.png")
+knitr::include_graphics("gdp_comp_rate_male.png")
+```
 
 <br>
 
 #### The scatterplot visualizing the relationship between GDP per capita and the unemployment gap showed that in countries with lower GDPs, the unemployment gap tends to be larger. 
 
-# *add in box plots*
+```{r, echo=FALSE}
+knitr::include_graphics("gdp_unemployment.png")
+```
 
 <br>
 
 #### The scatterplots visualizing the relationship between GDP per capita and the male and female OSSR showed that in countries with lower GDPs, they tend to have higher OOSRs for both females and males. 
 
-# *add in scatterplots*
+```{r, echo=FALSE}
+knitr::include_graphics("gdp_oosr_female.png")
+knitr::include_graphics("gdp_oosr_male.png")
+```
+
+<br>
+
+#### The scatterplot visualizing the relationship between GDP per capita and education gap (our added numerical varible) showed that in countries with lower GDPs, they tend to have a larger education gap. 
+
+```{r, echo=FALSE}
+knitr::include_graphics("gdp_education_gap.png")
+```
 
 <br>
 
 #### The world map offers a geographical visualization on economic disparities and global economic distribution. Countries were visually categorized based on their economic status (GDP per capita). 
 
-# *add map*
+```{r, echo=FALSE}
+knitr::include_graphics("gdp_map.png")
+```
 
 <br>
 
 #### The summary table shows the medians of the key indicators across the GDP per capita categories, showing an overview of the economic and educational outcomes. Completion rates for both females and males are positively associated with higher GDP, shown by the higher medians in the High GDP category. The unemployment rate medians show that unemployment rates tend to decrease with rising GDP. The OOSR shows variations between GDP categories. The education gap is notable in low GDP countries, with a higher education gap in low GDP.
 
-# *add table*
+```{r, echo=FALSE}
+summary_table <- read.csv("summary_table.csv")
+summary_table
+```
 
 <br>
+
+## Discussion
 
 #### Education Gap Across GDP Categories:
 #### The education gap, representing the gap in completion rates between males and females, is pronounced in countries with Low GDP. This suggests that economic status may have a gender-specific influence on educational outcomes, suggesting that we need more targeted interventions to address gender disparities in educational access and achievement within economically challenged countries.
