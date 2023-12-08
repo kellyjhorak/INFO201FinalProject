@@ -1,4 +1,4 @@
-# INFO201FinalProject Executive Summary
+# INFO 201 Final Project Executive Summary
 
 This project explores the relationship between a country's GDP per capita and various education-related indicators. The analysis uses a dataset that encompasses global economic and education data, aiming to reveal insights between economic prosperity and educational outcomes. Policymakers, educators, and students are our target audience as we hope the information derived from this analysis guides informed decision-making and targeted intitiatives to improve educational resources and opportunities in a global context. 
 
