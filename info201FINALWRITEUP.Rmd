@@ -124,39 +124,53 @@ date: "2023-12-07"
 
 #### The boxplots depicting male and female completion rates across the different GDP per capita ranks (low, mid, high) revealed similar patterns. For both, countries with lower GDP per capita tend to have a broader distribution in completion rates, indicating higher variability. The median completion rate was lower for countries with lower GDP per capita. Additionally, there was a presence of more outliers in high GDP countries, exhibited in both the female and male graphs.
 
-![](graphs/gdp_comp_rate_female.png)   
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_comp_rate_female.png")
+```
    
-![](graphs/gdp_comp_rate_male.png) 
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_comp_rate_male.png")
+```
    
 <br>
 
 ***  
 #### The scatterplot visualizing the relationship between GDP per capita and the unemployment gap showed that in countries with lower GDPs, the unemployment gap tends to be larger. 
 
-![](graphs/gdp_unemployment.png)  
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_unemployment.png")
+```
    
 <br>
 
 ***
 #### The scatterplots visualizing the relationship between GDP per capita and the male and female OSSR showed that in countries with lower GDPs, they tend to have higher OOSRs for both females and males. 
 
-![](graphs/gdp_oosr_female.png)  
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_oosr_female.png")
+```
    
-![](graphs/gdp_oosr_male.png)  
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_oosr_male.png")
+```
    
 <br>
 
 ***
 #### The scatterplot visualizing the relationship between GDP per capita and education gap (our added numerical varible) showed that in countries with lower GDPs, they tend to have a larger education gap. 
 
-![](graphs/gdp_education_gap.png)  
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_education_gap.png")
+```
    
 <br>
 
 ***
 #### The world map offers a geographical visualization on economic disparities and global economic distribution. Countries were visually categorized based on their economic status (GDP per capita). 
 
-![](graphs/gdp_map.png)  
+```{r echo=FALSE}
+knitr::include_graphics("graphs/gdp_map.png")
+```
    
 <br>
 
